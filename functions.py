@@ -70,3 +70,11 @@ def lehmanPeralta(p, aleatoryGeneration):
       return False
   else:
     return True
+
+# Función para calcular los tamaños de bloque en los que dividir un mensaje
+# a través de una longitud de alfabeto y un número n
+def numOfBlocksToDivide(alphabetLen, n):
+  j = 1
+  while ((alphabetLen ** (j - 1)) >= n or n >= (alphabetLen ** j)):
+    j += 1
+  return j - 1
