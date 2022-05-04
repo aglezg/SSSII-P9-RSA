@@ -78,3 +78,20 @@ def numOfBlocksToDivide(alphabetLen, n):
   while ((alphabetLen ** (j - 1)) >= n or n >= (alphabetLen ** j)):
     j += 1
   return j - 1
+
+# Divide una cadena en una serie de bloques
+def divideStringInBlocks(string, blockSize):
+  result = []
+  stringArray = [c for c in string]
+  aux = ''
+  while(len(stringArray) > 0):
+    aux += stringArray.pop(0)
+    if (len(aux) == blockSize):
+      result.append(aux)
+      aux = ''
+  if (len(aux) > 0):
+    result.append(aux)
+  return result
+
+print(divideStringInBlocks('MANDADINEROSHOLA', 2))
+#def bloqToDecimal(alphabet, block, tamBlock):
