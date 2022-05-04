@@ -10,10 +10,8 @@
 # implementadas en la práctica.
 # ----------------------------------------------------------------
 
-from email import message
 import os
 import random
-from tarfile import BLOCKSIZE
 
 # Limpia la pantalla de la terminal
 def cleanTerminal():
@@ -98,7 +96,7 @@ def divideStringInBlocks(string, blockSize, nullCharacter):
   return result
 
 # Convierte un bloque de caracteres en un array de números decimales
-def blockToDecimal(block, blockSize, alphabet: list, nullLetter):
+def blocksToDecimal(block, blockSize, alphabet: list, nullLetter):
   dividedBlocks = divideStringInBlocks(block, blockSize, nullLetter)
   result = []
   for block in dividedBlocks:
@@ -110,30 +108,9 @@ def blockToDecimal(block, blockSize, alphabet: list, nullLetter):
     result.append(value)
   return result
 
-alphMax = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-
 # Codifica un mensaje introducido por parámetro
 def encodeMessage(message, e, n):
   result = []
   for element in message:
     result.append(quickExp(element, e, n))
   return result
-
-
-p = 421
-q = 7
-d = 1619
-fiN = (p - 1) * (q - 1)
-n = p * q
-mcd, e = extendedEuclides(d, fiN)
-blockSize = numOfBlocksToDivide(len(alphMax), n)
-print(encodeMessage(blockToDecimal('MANDADINEROS', blockSize, alphMax, 'X'), e, n))
-
-p = 2347
-q = 347
-d = 5
-fiN = (p - 1) * (q - 1)
-n = p * q
-mcd, e = extendedEuclides(d, fiN)
-blockSize = numOfBlocksToDivide(len(alphMax), n)
-print(encodeMessage(blockToDecimal('AMIGOMIO', blockSize, alphMax, 'X'), e, n))
