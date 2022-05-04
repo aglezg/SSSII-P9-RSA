@@ -31,6 +31,17 @@ def quickExp(base, exp, module):
       expCopy = expCopy / 2
   return x
 
+# Algoritmo de Euclides Extendido
+def extendedEuclides(base, module):
+  x = [0, module, base]
+  z = [0, 1]
+  it = 2
+  while (x[it - 1] % x[it] != 0):
+    x.append(x[it - 1] % x[it])
+    z.append((-(x[it - 1] // x[it]) * z[it - 1] + z[it - 2]) % module)
+    it += 1
+  return x[len(x) -1], z[len(z) - 1]
+
 # Comprobar que un número es primo mediante el algoritmo de Lehman-Peralta
 # p = número primo a comprobar si es primo o no
 # aleatoryGeneration = cantidad de números aleatorios a utilizar
