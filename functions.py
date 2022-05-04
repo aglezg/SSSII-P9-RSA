@@ -93,5 +93,20 @@ def divideStringInBlocks(string, blockSize):
     result.append(aux)
   return result
 
-print(divideStringInBlocks('MANDADINEROSHOLA', 2))
-#def bloqToDecimal(alphabet, block, tamBlock):
+# Convierte un bloque de caracteres en un array de números decimales
+def blockToDecimal(block, blockSize, alphabet: list):
+  dividedBlocks = divideStringInBlocks(block, blockSize)
+  result = []
+  for block in dividedBlocks:
+    it = blockSize - 1
+    value = 0
+    for letter in block:
+      value += alphabet.index(letter) * len(alphabet) **  it
+      it -= 1
+    result.append(value)
+  return result
+
+alphMax = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+
+
+print(blockToDecimal('MANDADINEROS', 2, alphMax))
